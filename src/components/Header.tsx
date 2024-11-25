@@ -1,27 +1,21 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
-import LogoWithName from "../public/assets/icons/logo.svg"
 import Logo from "../public/assets/icons/logo-icon.svg"
+import { cn } from '@/lib/utils'
 
-const Header = ({children} : HeaderProps) => {
+const Header = ({children, className} : HeaderProps) => {
     return (
-        <div className='header'>
-            <Link href='/' className='md:flex-1'>
-                <Image
-                    src={LogoWithName}
-                    alt="Logo with name"
-                    width={120}
-                    height={32}
-                    className="hidden md:block"
-                />
+        <div className={cn("header", className)}>
+            <Link href='/' className='flex items-center'>
                 <Image
                     src={Logo}
                     alt="Logo"
                     width={32}
                     height={32}
-                    className="mr-2 md:hidden"
+                    className="mr-2"
                 />
+                <p className='text-xl font-bold'>Docomo</p>
             </Link>
             {children}
         </div>
