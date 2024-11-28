@@ -7,7 +7,7 @@ import { cn } from '@/lib/utils'
 const Header = ({children, className} : HeaderProps) => {
     return (
         <div className={cn("header", className)}>
-            <Link href='/' className='flex items-center'>
+            <Link href='/' className='flex w-fit items-center'>
                 <Image
                     src={Logo}
                     alt="Logo"
