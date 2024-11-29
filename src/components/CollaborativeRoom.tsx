@@ -11,9 +11,7 @@ import Image from 'next/image'
 import editImg from '../public/assets/icons/edit.svg';
 import { Input } from './ui/input'
 
-const CollaborativeRoom = ({ roomId, roomMetadata }: CollaborativeRoomProps) => {
-
-    const currentUserType = 'editor';
+const CollaborativeRoom = ({ roomId, roomMetadata, users, currentUserType}: CollaborativeRoomProps) => {
 
     const [documentTitle, setDocumentTitle] = useState(roomMetadata.title);
     const [editing, setEditing] = useState(false);
@@ -74,6 +72,7 @@ const CollaborativeRoom = ({ roomId, roomMetadata }: CollaborativeRoomProps) => 
                                 <Input
                                     type="text"
                                     value={documentTitle}
+                                    //@ts-ignore
                                     ref={inputRef}
                                     placeholder="Enter title"
                                     onChange={(e) => setDocumentTitle(e.target.value)}
@@ -114,7 +113,7 @@ const CollaborativeRoom = ({ roomId, roomMetadata }: CollaborativeRoomProps) => 
                             </SignedIn>
                         </div>
                     </Header>
-                    <Editor />
+                    <Editor roomId={roomId} currentUserType={currentUserType}/>
                 </div>
             </ClientSideSuspense>
         </RoomProvider>

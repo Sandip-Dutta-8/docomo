@@ -17,15 +17,16 @@ const Provider = ({ children }: { children: ReactNode }) => {
 
                 return users;
             }}
-            // resolveMentionSuggestions={async ({ text, roomId }) => {
-            //     const roomUsers = await getDocumentUsers({
-            //         roomId,
-            //         currentUser: clerkUser?.emailAddresses[0].emailAddress!,
-            //         text,
-            //     })
+            
+            resolveMentionSuggestions={async ({ text, roomId }) => {
+                const roomUsers = await getDocumentUsers({
+                    roomId,
+                    currentUser: clerkUser?.emailAddresses[0].emailAddress!,
+                    text,
+                })
 
-            //     return roomUsers;
-            // }}
+                return roomUsers;
+            }}
         >
             <ClientSideSuspense fallback={<Loader />}>
                 {children}
