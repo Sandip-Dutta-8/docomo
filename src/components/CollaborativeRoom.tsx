@@ -10,8 +10,9 @@ import { updateDocument } from '@/lib/actions/room.actions'
 import Image from 'next/image'
 import editImg from '../public/assets/icons/edit.svg';
 import { Input } from './ui/input'
+import ShareModal from './ShareModal'
 
-const CollaborativeRoom = ({ roomId, roomMetadata, users, currentUserType}: CollaborativeRoomProps) => {
+const CollaborativeRoom = ({ roomId, roomMetadata, users, currentUserType }: CollaborativeRoomProps) => {
 
     const [documentTitle, setDocumentTitle] = useState(roomMetadata.title);
     const [editing, setEditing] = useState(false);
@@ -105,6 +106,12 @@ const CollaborativeRoom = ({ roomId, roomMetadata, users, currentUserType}: Coll
                         </div>
                         <div className='flex justify-end gap-2 sm:gap-3'>
                             <ActiveCollaborators />
+                            <ShareModal
+                                roomId={roomId}
+                                collaborators={users}
+                                creatorId={roomMetadata.creatorId}
+                                currentUserType={currentUserType}
+                            />
                             <SignedOut>
                                 <SignInButton />
                             </SignedOut>
@@ -113,7 +120,7 @@ const CollaborativeRoom = ({ roomId, roomMetadata, users, currentUserType}: Coll
                             </SignedIn>
                         </div>
                     </Header>
-                    <Editor roomId={roomId} currentUserType={currentUserType}/>
+                    <Editor roomId={roomId} currentUserType={currentUserType} />
                 </div>
             </ClientSideSuspense>
         </RoomProvider>

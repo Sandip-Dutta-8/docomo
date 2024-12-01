@@ -8,6 +8,7 @@ import docImg from "../../public/assets/icons/doc.svg";
 import AddDocumentBtn from "@/components/AddDocumentBtn";
 import Link from "next/link";
 import { dateConverter } from "@/lib/utils";
+import { DeleteModal } from "@/components/DeleteModal";
 
 export default async function Home() {
 
@@ -54,7 +55,7 @@ export default async function Home() {
                     <p className="text-sm font-light text-blue-100">Created about {dateConverter(createdAt)}</p>
                   </div>
                 </Link>
-                {/* <DeleteModal roomId={id} /> */}
+                <DeleteModal roomId={id} />
               </li>
             ))}
           </ul>
